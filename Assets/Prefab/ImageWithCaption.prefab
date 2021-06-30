@@ -142,6 +142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4518134902594941561}
+  - component: {fileID: 4995449740209839957}
   m_Layer: 5
   m_Name: ImageWithCaption
   m_TagString: Untagged
@@ -170,6 +171,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00012207031, y: -0.27612305}
   m_SizeDelta: {x: 1.0969238, y: 2.5759277}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4995449740209839957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4518134902594941560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803864d2e6dc2944999ea75e912819d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerButton: {fileID: 6901792262931771860, guid: c817266d4fdcccb4a94e5f637084bcdd,
+    type: 3}
+  answerPanel: {fileID: 0}
+  questionStringText: {fileID: 4518134901400266529}
+  questionImage: {fileID: 6631364171736266161}
 --- !u!1 &8843633842453940908
 GameObject:
   m_ObjectHideFlags: 0

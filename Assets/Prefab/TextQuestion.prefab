@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 108473185262456114}
   - component: {fileID: 108473185262456108}
   - component: {fileID: 108473185262456109}
+  - component: {fileID: 4279165603980067354}
   m_Layer: 5
   m_Name: TextQuestion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &108473185262456114
 RectTransform:
   m_ObjectHideFlags: 0
@@ -133,3 +134,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4279165603980067354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108473185262456115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e86aebca86acd4099b389d9befb7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerButton: {fileID: 6901792262931771860, guid: c817266d4fdcccb4a94e5f637084bcdd,
+    type: 3}
+  answerPanel: {fileID: 0}
+  questionStringText: {fileID: 108473185262456109}

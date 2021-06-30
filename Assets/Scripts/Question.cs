@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Question : MonoBehaviour
+[System.Serializable]
+public class Question
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   public enum QuestionType
+   {
+      Text = 0,
+      ImageWithCaption = 1, 
+      Audio = 2
+   }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public QuestionType questionType;
+   public string questionText;
+   public Sprite questionImage;
+   public AudioClip questionAudio;
+   public string correctAnswerKey;
+   public string[] answerChoices;
+   
 }

@@ -1137,7 +1137,7 @@ PrefabInstance:
     - target: {fileID: 108473185262456114, guid: defc05f98a9c56d45be1d24791dea220,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.70007324
+      value: -0.7000122
       objectReference: {fileID: 0}
     - target: {fileID: 108473185262456114, guid: defc05f98a9c56d45be1d24791dea220,
         type: 3}
@@ -1159,11 +1159,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextQuestion
       objectReference: {fileID: 0}
-    - target: {fileID: 108473185262456115, guid: defc05f98a9c56d45be1d24791dea220,
+    - target: {fileID: 4279165603980067354, guid: defc05f98a9c56d45be1d24791dea220,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: answerPanel
+      value: 
+      objectReference: {fileID: 317324720}
+    - target: {fileID: 0}
+      propertyPath: answerPanel
+      value: 
+      objectReference: {fileID: 317324720}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defc05f98a9c56d45be1d24791dea220, type: 3}
 --- !u!1001 &4518134902242206062
@@ -1173,6 +1177,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 849427603}
     m_Modifications:
+    - target: {fileID: 4518134901400266529, guid: c8ba23867a2ffda458315bddadb040e1,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518134901400266529, guid: c8ba23867a2ffda458315bddadb040e1,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 4518134902594941560, guid: c8ba23867a2ffda458315bddadb040e1,
         type: 3}
       propertyPath: m_Name
@@ -1288,6 +1302,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4995449740209839957, guid: c8ba23867a2ffda458315bddadb040e1,
+        type: 3}
+      propertyPath: answerPanel
+      value: 
+      objectReference: {fileID: 317324720}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ba23867a2ffda458315bddadb040e1, type: 3}
 --- !u!1001 &6901792262824093854
@@ -1425,10 +1444,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 6367781836602290519, guid: 84b119c793777fa4c89f8ee7573f35c1,
+        type: 3}
+      propertyPath: answerPanel
+      value: 
+      objectReference: {fileID: 317324720}
     - target: {fileID: 7532346647172792384, guid: 84b119c793777fa4c89f8ee7573f35c1,
         type: 3}
       propertyPath: m_Name
       value: AudioWithCaption
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532346647172792384, guid: 84b119c793777fa4c89f8ee7573f35c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7532346647172792391, guid: 84b119c793777fa4c89f8ee7573f35c1,
         type: 3}

@@ -1,0 +1,22 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+
+public class QuestionUI : MonoBehaviour
+{
+   [SerializeField]
+   private GameObject answerButton;
+   [SerializeField]
+   private Transform answerPanel;
+   
+   public virtual void UpdateQuestionInfo(Question question)
+   {
+      question.answerChoices = question.answerChoices.OrderBy(answer => Random.value).ToArray(); // random on the answers position
+      foreach (string answer in question.answerChoices)
+      {
+         Transform answerButtonInstance = Instantiate(answerButton, answerPanel).transform;
+         // populate text with the answer data
+      }
+   }
+}

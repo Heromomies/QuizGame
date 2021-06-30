@@ -243,7 +243,14 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Files" t="Include">
+            <e p="AudioQuestion.cs" t="Include" />
+            <e p="ImageCaptionQuestion.cs" t="Include" />
+            <e p="TextQuestion.cs" t="Include" />
+          </e>
           <e p="Question.cs" t="Include" />
+          <e p="QuestionDatabase.cs" t="Include" />
+          <e p="QuestionUI.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
