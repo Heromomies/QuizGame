@@ -243,10 +243,17 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AnswerButton.cs" t="Include" />
           <e p="Files" t="Include">
             <e p="AudioQuestion.cs" t="Include" />
             <e p="ImageCaptionQuestion.cs" t="Include" />
             <e p="TextQuestion.cs" t="Include" />
+          </e>
+          <e p="Manager" t="Include">
+            <e p="Game.cs" t="Include" />
+          </e>
+          <e p="Menu" t="Include">
+            <e p="MainMenu.cs" t="Include" />
           </e>
           <e p="Question.cs" t="Include" />
           <e p="QuestionDatabase.cs" t="Include" />

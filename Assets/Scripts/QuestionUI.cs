@@ -16,7 +16,7 @@ public class QuestionUI : MonoBehaviour
       foreach (string answer in question.answerChoices)
       {
          Transform answerButtonInstance = Instantiate(answerButton, answerPanel).transform;
-         // populate text with the answer data
+         answerButtonInstance.GetComponent<AnswerButton>().SetAnswerButton(answer);
       }
    }
 }
