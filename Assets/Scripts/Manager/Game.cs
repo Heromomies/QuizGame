@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class Game : MonoBehaviour
         }
         else
         {
-            // load start menu
+            SceneManager.LoadScene(0);
         }
     }
 
