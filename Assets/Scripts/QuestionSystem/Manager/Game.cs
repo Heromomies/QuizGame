@@ -7,28 +7,33 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    public QuestionDatabase questionDatabase;
+    [HideInInspector] public QuestionDatabase questionDatabase;
     [SerializeField]
     private Transform questionPanel;
     [SerializeField]
     private Transform answerPanel;
     [SerializeField]
-    private Transform scoreScreen, questionScreen;
+    private Transform questionScreen;
     [SerializeField]
-    private TextMeshProUGUI scoreStats, scorePercentage;
+    private float detectionRangeMax = 2f;
+    //private TextMeshProUGUI scoreStats, scorePercentage;
+    
     
     private QuestionSet _currentQuestionSet;
     private Question _currentQuestion;
     private int _level;
     private int _currentQuestionIndex;
     private int _correctAnswers;
+    private int _inputIndex;
+
+    private Transform _closestNPC;
     // Start is called before the first frame update
     void Start()
     {
         _level = PlayerPrefs.GetInt("level", 0);
         _level = 0;
-        LoadQuestionSet();
-        UseQuestionTemplate(_currentQuestion.questionType);
+        //LoadQuestionSet();
+        //UseQuestionTemplate(_currentQuestion.questionType);
     }
 
     void LoadQuestionSet()
@@ -44,7 +49,25 @@ public class Game : MonoBehaviour
             Destroy(buttons.gameObject);
         }
     }
-    
+
+    private void Update()
+    {
+        _closestNPC = GetClosestNPC.instance.closestNonPlayableCharacter;
+       
+        float dist = Vector3.Distance(transform.position, _closestNPC.position);
+        if (dist <= detectionRangeMax)
+        {
+            questionDatabase = _closestNPC.GetComponent<NPCDatabase>().questionDatabase;
+            if (Input.GetKeyDown(KeyCode.E) && !_closestNPC.GetComponent<NPCDatabase>().isVisited)
+            {
+                questionScreen.gameObject.SetActive(true);
+                LoadQuestionSet();
+                UseQuestionTemplate(_currentQuestion.questionType);
+                _closestNPC.GetComponent<NPCDatabase>().isVisited = true;
+            }
+        }
+    }
+
     void UseQuestionTemplate(Question.QuestionType questionType)
     {
         for (int i = 0; i < questionPanel.childCount; i++)
@@ -65,7 +88,6 @@ public class Game : MonoBehaviour
             _currentQuestionIndex = 0;
             _level++;
             PlayerPrefs.SetInt("level", _level);
-            scoreScreen.gameObject.SetActive(false);
             questionScreen.gameObject.SetActive(true);
             LoadQuestionSet();
             UseQuestionTemplate(_currentQuestion.questionType);
@@ -86,10 +108,10 @@ public class Game : MonoBehaviour
         }
         else
         {
-            scoreScreen.gameObject.SetActive(true);
+            //scoreScreen.gameObject.SetActive(true);
             questionScreen.gameObject.SetActive(false);
-            scorePercentage.text = $"Score : \n {(float) _correctAnswers / (float) _currentQuestionSet.questions.Count * 100}%";
-            scoreStats.text = $"Questions: {_currentQuestionSet.questions.Count}\nCorrect: {_correctAnswers}";
+            /*scorePercentage.text = $"Score : \n {(float) _correctAnswers / (float) _currentQuestionSet.questions.Count * 100}%";
+            scoreStats.text = $"Questions: {_currentQuestionSet.questions.Count}\nCorrect: {_correctAnswers}";*/
         }
     }
     

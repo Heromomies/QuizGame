@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (numberOfMovement <= 0)
         {
-            Debug.Log("Restart Done");
+            //Debug.Log("Restart Done");
         }
     }
     // Update is called once per frame

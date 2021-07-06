@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05de00f48eb624f4cac26eeeff46dc22, type: 3}
+  m_Name: L1-QP3
+  m_EditorClassIdentifier: 
+  questionSets:
+  - level: 0
+    questions:
+    - questionType: 2
+      questionText: Quel est ce bruit ?
+      questionImage: {fileID: 0}
+      questionAudio: {fileID: 8300000, guid: 5f4dc51a23fe28a42bc85e1daa15e8e6, type: 3}
+      correctAnswerKey: "Oxyg\xE8ne"
+      answerChoices:
+      - "Oxyg\xE8ne"
+      - Instrument de musique
+      - Respiration
+      - Livre
+    - questionType: 2
+      questionText: Quel est cet instrument ?
+      questionImage: {fileID: 0}
+      questionAudio: {fileID: 8300000, guid: e1acffbf6c1fdc943a6e6863c0347906, type: 3}
+      correctAnswerKey: Flute
+      answerChoices:
+      - Flute
+      - Batterie
+      - Guitare
+      - Basse
