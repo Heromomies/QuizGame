@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -16,29 +17,18 @@ public class Game : MonoBehaviour
     private Transform questionScreen;
     [SerializeField]
     private float detectionRangeMax = 2f;
-    //private TextMeshProUGUI scoreStats, scorePercentage;
-    
-    
+
     private QuestionSet _currentQuestionSet;
     private Question _currentQuestion;
-    private int _level;
     private int _currentQuestionIndex;
     private int _correctAnswers;
     private int _inputIndex;
 
-    private Transform _closestNPC;
-    // Start is called before the first frame update
-    void Start()
-    {
-        _level = PlayerPrefs.GetInt("level", 0);
-        _level = 0;
-        //LoadQuestionSet();
-        //UseQuestionTemplate(_currentQuestion.questionType);
-    }
+    private Transform _closestNpc;
 
     void LoadQuestionSet()
     {
-        _currentQuestionSet = questionDatabase.GetQuestionSet(_level);
+        _currentQuestionSet = questionDatabase.GetQuestionSet();
         _currentQuestion = _currentQuestionSet.questions[0]; 
     }
 
@@ -52,18 +42,18 @@ public class Game : MonoBehaviour
 
     private void Update()
     {
-        _closestNPC = GetClosestNPC.instance.closestNonPlayableCharacter;
+        _closestNpc = GetClosestNPC.instance.closestNonPlayableCharacter;
        
-        float dist = Vector3.Distance(transform.position, _closestNPC.position);
+        float dist = Vector3.Distance(transform.position, _closestNpc.position);
         if (dist <= detectionRangeMax)
         {
-            questionDatabase = _closestNPC.GetComponent<NPCDatabase>().questionDatabase;
-            if (Input.GetKeyDown(KeyCode.E) && !_closestNPC.GetComponent<NPCDatabase>().isVisited)
+            questionDatabase = _closestNpc.GetComponent<NPCDatabase>().questionDatabase;
+            if (Input.GetKeyDown(KeyCode.E) && !_closestNpc.GetComponent<NPCDatabase>().isVisited)
             {
                 questionScreen.gameObject.SetActive(true);
                 LoadQuestionSet();
                 UseQuestionTemplate(_currentQuestion.questionType);
-                _closestNPC.GetComponent<NPCDatabase>().isVisited = true;
+                _closestNpc.GetComponent<NPCDatabase>().isVisited = true;
             }
         }
     }
@@ -80,14 +70,12 @@ public class Game : MonoBehaviour
         }
     }
     
-    public void NextQuestionSet()
+    /*public void NextQuestionSet()
     {
-        if (_level < questionDatabase.questionSets.Length - 1)
+        if (0 < questionDatabase.questionSets.Length - 1)
         {
             _correctAnswers = 0;
             _currentQuestionIndex = 0;
-            _level++;
-            PlayerPrefs.SetInt("level", _level);
             questionScreen.gameObject.SetActive(true);
             LoadQuestionSet();
             UseQuestionTemplate(_currentQuestion.questionType);
@@ -96,32 +84,38 @@ public class Game : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-    }
+    }*/
 
     void NextQuestion()
     {
         if (_currentQuestionIndex < _currentQuestionSet.questions.Count - 1)
         {
             _currentQuestionIndex++;
-            _currentQuestion = _currentQuestionSet.questions[_currentQuestionIndex];
+            _currentQuestion = _currentQuestionSet.questions[_currentQuestionIndex]; 
             UseQuestionTemplate(_currentQuestion.questionType);
         }
         else
         {
-            //scoreScreen.gameObject.SetActive(true);
             questionScreen.gameObject.SetActive(false);
-            /*scorePercentage.text = $"Score : \n {(float) _correctAnswers / (float) _currentQuestionSet.questions.Count * 100}%";
-            scoreStats.text = $"Questions: {_currentQuestionSet.questions.Count}\nCorrect: {_correctAnswers}";*/
+            _currentQuestionIndex = 0;
         }
     }
     
-    public void CheckAnswer(string answer)
+    public void CheckAnswer(string answer, Image image)
     {
         if (answer == _currentQuestion.correctAnswerKey)
         {
             _correctAnswers++;
+            image.color = Color.green;
         }
-        
+        else
+        { 
+            image.color = Color.red;
+        }
+    }
+
+    public void NextQuestionButton()
+    {
         ClearAnswers();
         NextQuestion();
     }

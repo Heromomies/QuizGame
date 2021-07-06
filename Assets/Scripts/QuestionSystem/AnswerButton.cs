@@ -13,7 +13,7 @@ public class AnswerButton : MonoBehaviour
     void Start()
     {
         _game = FindObjectOfType<Game>();
-        GetComponent<Button>().onClick.AddListener(() => _game.CheckAnswer(_answer));   
+        GetComponent<Button>().onClick.AddListener(() => _game.CheckAnswer(_answer, gameObject.GetComponent<Image>()));   
     }
     
     public void SetAnswerButton(string answer)

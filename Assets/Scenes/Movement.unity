@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionDatabase: {fileID: 11400000, guid: aaa0664dc751178418972e8d160269a7, type: 2}
+  isVisited: 0
 --- !u!1 &730038604
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +651,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2077173661}
   m_FillRect: {fileID: 419400030}
   m_HandleRect: {fileID: 2077173660}
@@ -852,6 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionDatabase: {fileID: 11400000, guid: f235fad1484000f4782ed89195700166, type: 2}
+  isVisited: 0
 --- !u!1 &1362073338
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionDatabase: {fileID: 11400000, guid: 595924207aa3e1c408b2fb43f250298b, type: 2}
+  isVisited: 0
 --- !u!1 &1443356995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1005,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 543123589383575101, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_text
+      value: Suite
+      objectReference: {fileID: 0}
+    - target: {fileID: 543123589383575101, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 543123589383575101, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016760375833248110, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_Name
+      value: NextQuestion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016760375833248110, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587911115861114777, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 771.96643
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587911115861114777, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 8587911116706594409, guid: 4ad0d99f801dfc04a8a8e296ef489826,
         type: 3}
       propertyPath: m_Name
@@ -1606,6 +1644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionDatabase: {fileID: 11400000, guid: cd201583124b5c44cad7a661f4159386, type: 2}
+  isVisited: 0
 --- !u!1 &2077173659
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: L1-QP4
   m_EditorClassIdentifier: 
   questionSets:
-  - level: 0
-    questions:
+  - questions:
     - questionType: 0
       questionText: Est ce que les pingouins ont des genoux ?
       questionImage: {fileID: 0}
@@ -29,8 +28,8 @@ MonoBehaviour:
       questionAudio: {fileID: 0}
       correctAnswerKey: Ochlophobie
       answerChoices:
-      - Ochlophobie
       - Agoraphobie
-      - Thalassophobie
-      - "Em\xE9tophobie"
       - "A\xE9rophobie"
+      - Thalassophobie
+      - Ochlophobie
+      - "Em\xE9tophobie"

@@ -13,27 +13,24 @@ MonoBehaviour:
   m_Name: L1-QP2
   m_EditorClassIdentifier: 
   questionSets:
-  - level: 0
-    questions:
+  - questions:
     - questionType: 1
       questionText: Quel est ce pays ?
       questionImage: {fileID: 21300000, guid: 4628dae081db40f4fb93c1f305ff2497, type: 3}
       questionAudio: {fileID: 0}
       correctAnswerKey: Etats Unis
       answerChoices:
-      - Angleterre
       - Etats Unis
       - Japon
       - France
-  - level: 0
-    questions:
+      - Angleterre
     - questionType: 1
       questionText: Quel est ce pays ?
       questionImage: {fileID: 21300000, guid: 0ff5ba6aa9b08494bb14a8728ee51d9c, type: 3}
       questionAudio: {fileID: 0}
       correctAnswerKey: Espagne
       answerChoices:
-      - Espagne
-      - Irlande
       - Portugal
+      - Espagne
       - Suisse
+      - Irlande
