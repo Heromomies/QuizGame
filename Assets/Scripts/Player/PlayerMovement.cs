@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public int numberOfMovement;
     public Slider sliderMovement;
-
+    public LayerMask layerMask;
     private void Start()
     {
         sliderMovement.value = numberOfMovement;
@@ -30,25 +30,29 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        RaycastHit hit;
+
+        if (Input.GetKeyDown(KeyCode.Z) && !Physics.Raycast(transform.position, transform.forward, out hit, 1, layerMask))
         {
             transform.position += Vector3.forward;
+            numberOfMovement--;
+            UpdateSlider();
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) && !Physics.Raycast(transform.position, transform.right, out hit, 1, layerMask))
         {
             transform.position += Vector3.right;
+            numberOfMovement--;
+            UpdateSlider();
         }
-        else if (Input.GetKeyDown(KeyCode.Q))
+        else if (Input.GetKeyDown(KeyCode.Q)&& !Physics.Raycast(transform.position, -transform.right, out hit, 1, layerMask))
         {
             transform.position += Vector3.left;
+            numberOfMovement--;
+            UpdateSlider();
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) && !Physics.Raycast(transform.position, -transform.forward, out hit, 1, layerMask))
         {
             transform.position -= Vector3.forward;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.S))
-        {
             numberOfMovement--;
             UpdateSlider();
         }

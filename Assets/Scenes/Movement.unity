@@ -168,6 +168,8 @@ MonoBehaviour:
   questionPanel: {fileID: 1452878281}
   answerPanel: {fileID: 1452878280}
   questionScreen: {fileID: 1452878278}
+  buttonSkip: {fileID: 1452878276}
+  sliderMovement: {fileID: 764732899}
   detectionRangeMax: 2
 --- !u!1 &419400029
 GameObject:
@@ -350,7 +352,7 @@ GameObject:
   - component: {fileID: 543011523}
   - component: {fileID: 543011522}
   - component: {fileID: 543011526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: P1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,6 +459,7 @@ GameObject:
   - component: {fileID: 730038607}
   - component: {fileID: 730038606}
   - component: {fileID: 730038605}
+  - component: {fileID: 730038611}
   - component: {fileID: 730038609}
   - component: {fileID: 730038610}
   m_Layer: 0
@@ -556,6 +559,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfMovement: 10
   sliderMovement: {fileID: 764732899}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &730038610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,7 +579,23 @@ MonoBehaviour:
   - {fileID: 1362073342}
   - {fileID: 1290302750}
   - {fileID: 543011525}
-  closestNonPlayableCharacter: {fileID: 0}
+  closestNonPlayableCharacter: {fileID: 1812219426}
+--- !u!54 &730038611
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730038604}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 3
 --- !u!1 &764732897
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +607,7 @@ GameObject:
   - component: {fileID: 764732898}
   - component: {fileID: 764732899}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SliderMovement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -759,7 +781,7 @@ GameObject:
   - component: {fileID: 1290302748}
   - component: {fileID: 1290302747}
   - component: {fileID: 1290302751}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: P1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,7 +889,7 @@ GameObject:
   - component: {fileID: 1362073340}
   - component: {fileID: 1362073339}
   - component: {fileID: 1362073343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: P1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,6 +1052,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6613543951511222247, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613543951511222247, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613543951511222247, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 359545695}
+    - target: {fileID: 6613543951511222247, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613543951511222247, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextQuestionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613543951511222247, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8587911115861114777, guid: 4ad0d99f801dfc04a8a8e296ef489826,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -1152,6 +1204,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ad0d99f801dfc04a8a8e296ef489826, type: 3}
+--- !u!224 &1452878276 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1056961711860940115, guid: 4ad0d99f801dfc04a8a8e296ef489826,
+    type: 3}
+  m_PrefabInstance: {fileID: 1452878275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1452878278 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8587911116259429110, guid: 4ad0d99f801dfc04a8a8e296ef489826,
@@ -1550,7 +1608,7 @@ GameObject:
   - component: {fileID: 1812219424}
   - component: {fileID: 1812219423}
   - component: {fileID: 1812219427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

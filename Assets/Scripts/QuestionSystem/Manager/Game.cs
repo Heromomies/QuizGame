@@ -9,12 +9,20 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     [HideInInspector] public QuestionDatabase questionDatabase;
+    [Header("Transform")]
     [SerializeField]
     private Transform questionPanel;
     [SerializeField]
     private Transform answerPanel;
     [SerializeField]
     private Transform questionScreen;
+    [SerializeField]
+    private Transform buttonSkip;
+    
+    [Space]
+    [Header("Gameplay")]
+    [SerializeField]
+    private Slider sliderMovement;
     [SerializeField]
     private float detectionRangeMax = 2f;
 
@@ -23,7 +31,7 @@ public class Game : MonoBehaviour
     private int _currentQuestionIndex;
     private int _correctAnswers;
     private int _inputIndex;
-
+    
     private Transform _closestNpc;
 
     void LoadQuestionSet()
@@ -34,10 +42,13 @@ public class Game : MonoBehaviour
 
     void ClearAnswers()
     {
-        foreach (Transform buttons in answerPanel)
+        foreach (Button buttons in answerPanel.GetComponentsInChildren<Button>())
         {
             Destroy(buttons.gameObject);
         }
+        
+        buttonSkip.gameObject.SetActive(false);
+        sliderMovement.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -70,7 +81,7 @@ public class Game : MonoBehaviour
         }
     }
     
-    /*public void NextQuestionSet()
+    public void NextQuestionSet()
     {
         if (0 < questionDatabase.questionSets.Length - 1)
         {
@@ -84,7 +95,7 @@ public class Game : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-    }*/
+    }
 
     void NextQuestion()
     {
@@ -107,11 +118,21 @@ public class Game : MonoBehaviour
         {
             _correctAnswers++;
             image.color = Color.green;
+            foreach (var button in answerPanel.GetComponentsInChildren<Button>())
+            {
+                button.interactable = false;
+            }
         }
         else
         { 
             image.color = Color.red;
+            foreach (var button in answerPanel.GetComponentsInChildren<Button>())
+            {
+                button.interactable = false;
+            }
         }
+        buttonSkip.gameObject.SetActive(true);
+        sliderMovement.gameObject.SetActive(false);
     }
 
     public void NextQuestionButton()
