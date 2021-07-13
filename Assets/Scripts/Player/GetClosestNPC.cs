@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,30 +22,34 @@ public class GetClosestNPC : MonoBehaviour
         }
     }
     #endregion
-
-    [SerializeField] 
-    private Transform[] nonPlayableCharacters;
+    
+    private GameObject[] _nonPlayableCharacters;
 
     [HideInInspector] public Transform closestNonPlayableCharacter;
-    
-    private void Update()
+
+    private void Start()
     {
-        GetClosestPlayer(nonPlayableCharacters);
+        _nonPlayableCharacters = GameObject.FindGameObjectsWithTag("NPC");
     }
 
-    Transform GetClosestPlayer (Transform[] players)
+    private void Update()
+    {
+        GetClosestPlayer(_nonPlayableCharacters);
+    }
+    
+    Transform GetClosestPlayer (GameObject[] players)
     {
         Transform bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
-        foreach(Transform potentialTarget in players)
+        foreach(GameObject potentialTarget in players)
         {
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if(dSqrToTarget < closestDistanceSqr)
             {
                 closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
+                bestTarget = potentialTarget.transform;
             }
         }
         

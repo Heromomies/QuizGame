@@ -33,7 +33,7 @@ public class Game : MonoBehaviour
     private QuestionSet _currentQuestionSet;
     private Question _currentQuestion;
     private int _currentQuestionIndex;
-    private int _numberOfBottle;
+    [HideInInspector] public int numberOfBottle;
     private int _inputIndex;
     
     private Transform _closestNpc;
@@ -120,7 +120,7 @@ public class Game : MonoBehaviour
         if (answer == _currentQuestion.correctAnswerKey)
         {
             image.color = Color.green;
-            _numberOfBottle++;
+            numberOfBottle++;
             ActualizeNumberOfBottle();
             foreach (var button in answerPanel.GetComponentsInChildren<Button>())
             {
@@ -147,17 +147,21 @@ public class Game : MonoBehaviour
 
     public void OnUseBottle()
     {
-        if(gameObject.GetComponentInParent<PlayerMovement>().numberOfMovement < 10)
+        if(gameObject.GetComponentInParent<PlayerMovement>().numberOfMovement < 10 && numberOfBottle > 0)
         {
             gameObject.GetComponentInParent<PlayerMovement>().numberOfMovement += numberOfMovementAdded;
             gameObject.GetComponentInParent<PlayerMovement>().UpdateSlider();
-            _numberOfBottle--;
+            numberOfBottle--;
             ActualizeNumberOfBottle();
         }
     }
 
     public void ActualizeNumberOfBottle()
     {
-        buttonBottle.GetComponentInChildren<TextMeshProUGUI>().text = $"{_numberOfBottle}";
+        if (numberOfBottle < 0)
+        {
+            numberOfBottle = 0;
+        }
+        buttonBottle.GetComponentInChildren<TextMeshProUGUI>().text = $"{numberOfBottle}";
     }
 }

@@ -38,8 +38,12 @@ public class LevelGenerator : MonoBehaviour
         {
             if (colorMapping.color.Equals(pixelColor))
             {
-                Vector3 position = new Vector3(x, 0,z);
-                Instantiate(colorMapping.prefab, position, Quaternion.identity, transform);
+                if (colorMapping.parent == null)
+                {
+                    colorMapping.parent = transform;
+                }
+                Vector3 position = new Vector3(x, colorMapping.height, z);
+                Instantiate(colorMapping.prefab, position, Quaternion.identity, colorMapping.parent);
             }
         }
     }

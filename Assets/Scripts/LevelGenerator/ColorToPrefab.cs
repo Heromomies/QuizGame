@@ -5,4 +5,6 @@ public class ColorToPrefab
 {
    public Color color;
    public GameObject prefab;
+   public float height;
+   public Transform parent;
 }
