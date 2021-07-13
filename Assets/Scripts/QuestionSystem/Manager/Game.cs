@@ -34,6 +34,7 @@ public class Game : MonoBehaviour
     private Question _currentQuestion;
     private int _currentQuestionIndex;
     [HideInInspector] public int numberOfBottle;
+    [HideInInspector] public bool inQuestion;
     private int _inputIndex;
     
     private Transform _closestNpc;
@@ -57,6 +58,11 @@ public class Game : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            numberOfBottle++;
+            ActualizeNumberOfBottle();
+        }
         _closestNpc = GetClosestNPC.instance.closestNonPlayableCharacter;
        
         float dist = Vector3.Distance(transform.position, _closestNpc.position);
@@ -69,6 +75,7 @@ public class Game : MonoBehaviour
                 LoadQuestionSet();
                 UseQuestionTemplate(_currentQuestion.questionType);
                 _closestNpc.GetComponent<NPCDatabase>().isVisited = true;
+                inQuestion = true;
             }
         }
     }
@@ -111,6 +118,7 @@ public class Game : MonoBehaviour
         else
         {
             questionScreen.gameObject.SetActive(false);
+            inQuestion = false;
             _currentQuestionIndex = 0;
         }
     }
