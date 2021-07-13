@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Death();
+
+        if (numberOfMovement > sliderMovement.value)
+        {
+            numberOfMovement = (int) sliderMovement.value;
+        }
     }
 
     void Death()
@@ -58,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void UpdateSlider()
+    public void UpdateSlider()
     {
         sliderMovement.value = numberOfMovement;
     }

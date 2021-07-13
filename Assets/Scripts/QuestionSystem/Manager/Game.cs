@@ -18,18 +18,22 @@ public class Game : MonoBehaviour
     private Transform questionScreen;
     [SerializeField]
     private Transform buttonSkip;
+    [SerializeField]
+    private Transform buttonBottle;
     
     [Space]
     [Header("Gameplay")]
     [SerializeField]
     private Slider sliderMovement;
     [SerializeField]
-    private float detectionRangeMax = 2f;
+    private float detectionRangeMax;
+    [SerializeField]
+    private int numberOfMovementAdded;
 
     private QuestionSet _currentQuestionSet;
     private Question _currentQuestion;
     private int _currentQuestionIndex;
-    private int _correctAnswers;
+    private int _numberOfBottle;
     private int _inputIndex;
     
     private Transform _closestNpc;
@@ -85,7 +89,6 @@ public class Game : MonoBehaviour
     {
         if (0 < questionDatabase.questionSets.Length - 1)
         {
-            _correctAnswers = 0;
             _currentQuestionIndex = 0;
             questionScreen.gameObject.SetActive(true);
             LoadQuestionSet();
@@ -116,8 +119,9 @@ public class Game : MonoBehaviour
     {
         if (answer == _currentQuestion.correctAnswerKey)
         {
-            _correctAnswers++;
             image.color = Color.green;
+            _numberOfBottle++;
+            ActualizeNumberOfBottle();
             foreach (var button in answerPanel.GetComponentsInChildren<Button>())
             {
                 button.interactable = false;
@@ -139,5 +143,21 @@ public class Game : MonoBehaviour
     {
         ClearAnswers();
         NextQuestion();
+    }
+
+    public void OnUseBottle()
+    {
+        if(gameObject.GetComponentInParent<PlayerMovement>().numberOfMovement < 10)
+        {
+            gameObject.GetComponentInParent<PlayerMovement>().numberOfMovement += numberOfMovementAdded;
+            gameObject.GetComponentInParent<PlayerMovement>().UpdateSlider();
+            _numberOfBottle--;
+            ActualizeNumberOfBottle();
+        }
+    }
+
+    public void ActualizeNumberOfBottle()
+    {
+        buttonBottle.GetComponentInChildren<TextMeshProUGUI>().text = $"{_numberOfBottle}";
     }
 }
