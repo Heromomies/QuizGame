@@ -12,8 +12,7 @@ public class Database : MonoBehaviour
         if (instance == null){
 
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
-    
+
             //Rest of your Awake code
     
         } else {

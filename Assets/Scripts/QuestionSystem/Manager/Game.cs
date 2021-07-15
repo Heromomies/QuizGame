@@ -36,8 +36,14 @@ public class Game : MonoBehaviour
     [HideInInspector] public int numberOfBottle;
     [HideInInspector] public bool inQuestion;
     private int _inputIndex;
-    
-    private Transform _closestNpc;
+
+    private Transform _closestNonPlayableCharacter;
+    private GameObject[] _nonPlayableCharacters;
+    private void Start()
+    {
+        _nonPlayableCharacters = GameObject.FindGameObjectsWithTag("NPC");
+        GetClosestPlayer(_nonPlayableCharacters);
+    }
 
     void LoadQuestionSet()
     {
@@ -55,26 +61,45 @@ public class Game : MonoBehaviour
         buttonSkip.gameObject.SetActive(false);
         sliderMovement.gameObject.SetActive(true);
     }
-
+    Transform GetClosestPlayer (GameObject[] players)
+    {
+        Transform bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach(GameObject potentialTarget in players)
+        {
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if(dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget.transform;
+            }
+        }
+        
+        _closestNonPlayableCharacter = bestTarget;
+        return bestTarget;
+    }
     private void Update()
     {
+        GetClosestPlayer(_nonPlayableCharacters);
         if (Input.GetKeyDown(KeyCode.A))
         {
             numberOfBottle++;
             ActualizeNumberOfBottle();
         }
-        _closestNpc = GetClosestNPC.instance.closestNonPlayableCharacter;
-       
-        float dist = Vector3.Distance(transform.position, _closestNpc.position);
+
+        float dist = Vector3.Distance(transform.position, _closestNonPlayableCharacter.position);
+        
         if (dist <= detectionRangeMax)
         {
-            questionDatabase = _closestNpc.GetComponent<NPCDatabase>().questionDatabase;
-            if (Input.GetKeyDown(KeyCode.E) && !_closestNpc.GetComponent<NPCDatabase>().isVisited)
+            questionDatabase = _closestNonPlayableCharacter.GetComponent<NPCDatabase>().questionDatabase;
+            if (Input.GetKeyDown(KeyCode.E) && !_closestNonPlayableCharacter.GetComponent<NPCDatabase>().isVisited)
             {
                 questionScreen.gameObject.SetActive(true);
                 LoadQuestionSet();
                 UseQuestionTemplate(_currentQuestion.questionType);
-                _closestNpc.GetComponent<NPCDatabase>().isVisited = true;
+                _closestNonPlayableCharacter.GetComponent<NPCDatabase>().isVisited = true;
                 inQuestion = true;
             }
         }

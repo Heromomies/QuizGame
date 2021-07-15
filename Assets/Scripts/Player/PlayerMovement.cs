@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfMovement;
     public Slider sliderMovement;
     public LayerMask layerMask;
+    public Transform playerMesh;
+
+    private bool _isTouching;
     private void Start()
     {
         sliderMovement.value = numberOfMovement;
@@ -36,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Death()
     {
-        if (numberOfMovement <= 0 && GetComponentInChildren<Game>().numberOfBottle == 0)
+        if (numberOfMovement <= 0 && GetComponentInChildren<Game>().numberOfBottle == 0 && !_isTouching)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
         }
     }
     // Update is called once per frame
@@ -51,34 +54,42 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z) && !Physics.Raycast(transform.position, transform.forward, out hit, 1, layerMask))
             {
                 transform.position += Vector3.forward;
-                GetComponentInChildren<MeshRenderer>().transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                playerMesh.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
                 numberOfMovement--;
-               
+                _isTouching = false;
+                
                 UpdateSlider();
             }
             else if (Input.GetKeyDown(KeyCode.D) && !Physics.Raycast(transform.position, transform.right, out hit, 1, layerMask))
             {
                 transform.position += Vector3.right;
-                GetComponentInChildren<MeshRenderer>().transform.rotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+                playerMesh.rotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
                 numberOfMovement--;
+                _isTouching = false;
                 
                 UpdateSlider();
             }
             else if (Input.GetKeyDown(KeyCode.Q) && !Physics.Raycast(transform.position, -transform.right, out hit, 1, layerMask))
             {
                 transform.position += Vector3.left;
-                GetComponentInChildren<MeshRenderer>().transform.rotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
+                playerMesh.rotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
                 numberOfMovement--;
+                _isTouching = false;
                 
                 UpdateSlider();
             }
             else if (Input.GetKeyDown(KeyCode.S) && !Physics.Raycast(transform.position, -transform.forward, out hit, 1, layerMask))
             {
                 transform.position -= Vector3.forward;
-                GetComponentInChildren<MeshRenderer>().transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                playerMesh.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
                 numberOfMovement--;
+                _isTouching = false;    
                 
                 UpdateSlider();
+            }
+            else
+            {
+                _isTouching = true;
             }
         }
     }
