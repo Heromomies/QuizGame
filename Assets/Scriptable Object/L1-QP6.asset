@@ -10,26 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05de00f48eb624f4cac26eeeff46dc22, type: 3}
-  m_Name: L1-QP4
+  m_Name: L1-QP6
   m_EditorClassIdentifier: 
   questionSets:
   - questions:
     - questionType: 0
-      questionText: Est ce que les pingouins ont des genoux ?
+      questionText: Quel insecte produit le miel ?
       questionImage: {fileID: 0}
       questionAudio: {fileID: 0}
-      correctAnswerKey: Oui
+      correctAnswerKey: L'abeille
       answerChoices:
-      - Oui
-      - Non
+      - L'abeille
+      - "Le scarab\xE9e"
+      - Le puceron
     - questionType: 0
-      questionText: Quelle est la peur de la foule ?
+      questionText: "Quel est le nom de l'agence spatiale am\xE9ricaine ?"
       questionImage: {fileID: 0}
       questionAudio: {fileID: 0}
-      correctAnswerKey: Ochlophobie
+      correctAnswerKey: La NASA
       answerChoices:
-      - Agoraphobie
-      - "A\xE9rophobie"
-      - Thalassophobie
-      - Ochlophobie
-      - "Em\xE9tophobie"
+      - La Lufthansa
+      - La NASA
+      - La Mir

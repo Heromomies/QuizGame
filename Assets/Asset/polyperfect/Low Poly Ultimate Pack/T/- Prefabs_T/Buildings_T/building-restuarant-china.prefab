@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5042076022206130119}
   - component: {fileID: 5042076022205129991}
   - component: {fileID: 3634036792634439483}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: building-restuarant-china
   m_TagString: Untagged
   m_Icon: {fileID: 0}

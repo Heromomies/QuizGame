@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33175851042838734}
   - component: {fileID: 23178965843848666}
   - component: {fileID: 64797851573140896}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bear_brown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

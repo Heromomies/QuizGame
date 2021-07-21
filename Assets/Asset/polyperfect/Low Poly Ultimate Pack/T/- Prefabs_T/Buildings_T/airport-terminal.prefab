@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3034362009883468466}
   - component: {fileID: 3034362009884434546}
   - component: {fileID: 3034362009886472209}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: airport-terminal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

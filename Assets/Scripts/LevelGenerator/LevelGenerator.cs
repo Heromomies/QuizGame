@@ -36,14 +36,17 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (ColorToPrefab colorMapping in colorMappings)
         {
+            
+            Debug.Log(colorMapping.color);
             if (colorMapping.color.Equals(pixelColor))
             {
+                
                 if (colorMapping.parent == null)
                 {
                     colorMapping.parent = transform;
                 }
                 Vector3 position = new Vector3(x, colorMapping.height, z);
-                Instantiate(colorMapping.prefab, position, Quaternion.identity, colorMapping.parent);
+                Instantiate(colorMapping.prefab, position, colorMapping.rotationDegree, colorMapping.parent);
             }
         }
     }

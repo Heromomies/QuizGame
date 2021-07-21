@@ -39,11 +39,6 @@ public class Game : MonoBehaviour
 
     private Transform _closestNonPlayableCharacter;
     private GameObject[] _nonPlayableCharacters;
-    private void Start()
-    {
-        _nonPlayableCharacters = GameObject.FindGameObjectsWithTag("NPC");
-        GetClosestPlayer(_nonPlayableCharacters);
-    }
 
     void LoadQuestionSet()
     {
@@ -82,6 +77,7 @@ public class Game : MonoBehaviour
     }
     private void Update()
     {
+        _nonPlayableCharacters = GameObject.FindGameObjectsWithTag("NPC");
         GetClosestPlayer(_nonPlayableCharacters);
         if (Input.GetKeyDown(KeyCode.A))
         {

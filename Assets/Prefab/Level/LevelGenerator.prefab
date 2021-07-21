@@ -49,8 +49,31 @@ MonoBehaviour:
     prefab: {fileID: 1134754711200057961, guid: 4e5503c0b24666942bc2f36aa71b4bbe,
       type: 3}
     height: 0.5
+    rotationDegree: {x: 0, y: 0, z: 0, w: 0}
     parent: {fileID: 0}
+    description: Rouge
   - color: {r: 0, g: 0, b: 1, a: 1}
-    prefab: {fileID: 1588169782231440, guid: 52a08450352c84122ac0f0e0643dd162, type: 3}
+    prefab: {fileID: 1618932462221820, guid: 8afc797647f6643e89645ba056e14b1f, type: 3}
     height: 0.5
+    rotationDegree: {x: 0, y: 0, z: 0, w: 0}
     parent: {fileID: 0}
+    description: Bleu
+  - color: {r: 1, g: 1, b: 0, a: 1}
+    prefab: {fileID: 3673917420240763012, guid: 2e3b491ac8499904fb847540fea6dd05,
+      type: 3}
+    height: 0.5
+    rotationDegree: {x: 0, y: 0, z: 0, w: 0}
+    parent: {fileID: 8648518730573518145}
+    description: Jaune
+  - color: {r: 1, g: 0, b: 1, a: 1}
+    prefab: {fileID: 1000013308561670, guid: 9feb319cc4eb0df4a95cff29c78f650b, type: 3}
+    height: 5
+    rotationDegree: {x: 0, y: 0, z: 0, w: 0}
+    parent: {fileID: 8648518730573518145}
+    description: Rose
+  - color: {r: 0.6427109, g: 0.6427109, b: 1, a: 1}
+    prefab: {fileID: 1000011901395242, guid: e8cee43cb2a02409b993b449980fadde, type: 3}
+    height: 0.5
+    rotationDegree: {x: 0, y: 0, z: 0, w: 0}
+    parent: {fileID: 0}
+    description: "Bleu p\xE2le"
